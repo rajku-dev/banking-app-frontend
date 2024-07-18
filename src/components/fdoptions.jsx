@@ -10,7 +10,7 @@ const fdir = [
 
 const FDOptions = () => {
   return (
-    <>
+    <div className='optionsTable'>
       <h1 className='text- fs-2 fw-normal' style={{ marginLeft: '25%', marginTop: 50 }}>Choose what suits you the best</h1>
       <table className="table table-striped mx-auto shadow-sm my-4 mb-5" style={{ width: '85%' }}>
         <thead>
@@ -36,7 +36,7 @@ const FDOptions = () => {
           ))}
         </tbody>
       </table>
-    </>
+    </div>
   );
 };
 

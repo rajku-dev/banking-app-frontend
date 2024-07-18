@@ -1,5 +1,6 @@
+/* Default styles for all screen sizes */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-html, body{
+html, body {
     font-size: 20px;
     background: #fffefe;
     font-family: 'Poppins', sans-serif;
@@ -10,38 +11,121 @@ html, body{
     left: 0;
 }
 
-ul{
+ul {
     list-style-type: none;
 }
 
 .navbar {
-    background:#fff ;
+    background: #fff;
     padding: 1rem 1em;
-    height: 0 rem;
     min-height: 10vh;
 }
 
-.navbar .navbar-brand a{
+.navbar .navbar-brand a {
     padding: 1rem 0;
     display: block;
     text-decoration: none;
 }
 
-.navbar-toggler{
+.navbar-toggler {
     background: #e74c3c;
     border: none;
     padding: 10px 6px;
     outline: none;
 }
 
-.navbar-toggler span{
+.navbar-toggler span {
     display: block;
     width: 22px;
     height: 2px;
-    border: 1px;
     background: #fff;
 }
 
-.nav-item{
-    margin-left:60px;
+.nav-item {
+    margin-left: 60px;
 }
+
+/* Media query for mobile phones */
+@media (max-width: 768px) {
+    html, body {
+        font-size: 16px;
+        line-height: 2.8;
+    }
+
+    .navbar {
+        padding: 0.5rem 1em; 
+    }
+
+    .navbar-toggler {
+        padding: 8px 6px; 
+    }
+
+    .nav-item {
+        margin-left: 30px; 
+    }
+}
+
+/* Default styles for larger screens */
+.home .card {
+    width: 20rem;
+    height: 12rem;
+  }
+  
+  /* Media query for mobile screens */
+  @media (max-width: 768px) {
+    .home .d-flex {
+      flex-direction: column;
+      align-items: center;
+      gap: 3rem;
+    }
+  
+    .home .card {
+      margin-bottom: 1rem;
+    }
+  }
+  
+/* Default styles */
+.table h1 {
+  margin-left: 25%;
+  margin-top: 50px;
+}
+
+.table {
+  width: 85%;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+
+  .optionsTable h1 {
+    margin-left: 0;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .optionsTable {
+    width: 100%;
+    margin: 1rem;
+    box-shadow: none;
+  }
+
+  .optionsTable table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .optionsTable th,
+  .optionsTable td {
+    padding: 0.5rem;
+  }
+
+  .optionsTable .btn {
+    width: 100%;
+    padding: 0.5rem;
+  }
+}
+
+

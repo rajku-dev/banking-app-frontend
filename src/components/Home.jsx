@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
-    <>
+    <div className="home">
       <h1 className="text-center">BANK OF ORIGIN</h1>
       <h6 className="fst-italic text-center mb-5">
         Empowering Your Financial Journey with Trust and Innovation
@@ -76,7 +76,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

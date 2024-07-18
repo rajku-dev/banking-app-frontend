@@ -11,9 +11,9 @@ const Navbar = () => {
   const user = auth.getCurrentUser();
   const handleDeleteUser = async () => {
     await deleteUser();
-  };
+};
 
-  
+
   const handleFdPdf = async () => {
     try {
       const { data: fds } = await getFds();

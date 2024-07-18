@@ -12,6 +12,7 @@ async function register(user) {
   loginWithJwt(response.headers['x-auth-token'])
 }
 
+
 async function login(user) {
   console.log(user)
   const { data: jwt } = await axios.post(api + "/login", user);
