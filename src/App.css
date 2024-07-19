@@ -128,4 +128,46 @@ ul {
   }
 }
 
+.navbar {
+  background-color: #343a40; /* Dark background color */
+}
+
+.nav-link:hover {
+  color: #17a2b8; /* Light blue color on hover */
+}
+
+.dropdown-item:hover {
+  background-color: #198754;
+  color:#fff;
+  transition: 0.3s;
+}
+
+.text-danger:hover{
+    background-color: #ffaaaa;
+    transition: 0.5s;
+}
+
+/* styles.css */
+.special-form {
+  position: relative;
+  overflow: hidden;
+  padding: 16rem 0 0 0; /* Adjust padding if necessary */
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.form-content {
+  position: relative;
+  z-index: 1;
+  padding: 2rem; /* Adjust padding if needed */
+}
+
 

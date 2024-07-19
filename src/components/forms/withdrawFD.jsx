@@ -37,7 +37,8 @@ class FDWithdrawForm extends Form {
     const {errors}={...this.state}
     // if (auth.getCurrentUser()) return <Redirect to="/" />;
     return (
-      <div className="w-50 m-auto">
+      <div className="form" style={{padding:'16rem', paddingTop:'2rem'}}>
+  
         <h1>Withdraw FD</h1>
         {errors && errors.backend && <div className="alert alert-danger">{errors.backend}</div>}
         <form onSubmit={this.handleSubmit}>

@@ -13,7 +13,7 @@ class DepositForm extends Form {
   schema = {
     accountNumber: Joi.string().required().label("Account Number"),
     pin: Joi.string().required().label("PIN"),
-    amount: Joi.string().required().label("Amount")
+    amount: Joi.number().integer().min(1).required().label("Amount")
   };
 
   async doSubmit() {
@@ -35,7 +35,8 @@ class DepositForm extends Form {
     const { errors } = this.state;
 
     return (
-      <div className="w-50 m-auto mt-4">
+      <div className="form" style={{padding:'16rem', paddingTop:'2rem'}}>
+     
         <h1>Deposit</h1>
         {errors && errors.backend && <div className="alert alert-danger">{errors.backend}</div>}
         <form onSubmit={this.handleSubmit}>

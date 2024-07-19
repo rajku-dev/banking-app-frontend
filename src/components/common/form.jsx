@@ -8,7 +8,7 @@ class Form extends Component {
     data: {},
     errors: {},
   };
-  
+
   validate = () => {
     const options = { abortEarly: false };
     const { error } = Joi.validate(this.state.data, this.schema, options);
@@ -25,7 +25,7 @@ class Form extends Component {
     const { error } = Joi.validate(obj, schema);
     return error ? error.details[0].message : null;
   };
-  
+
   handleSubmit = (e) => {
     // console.log(process.env.REACT_APP_API)
     e.preventDefault();
@@ -43,14 +43,17 @@ class Form extends Component {
 
     const data = { ...this.state.data };
     data[input.name] = input.value;
-    console.log(data)
+    console.log(data);
 
     this.setState({ data, errors });
   };
 
   renderButton(label) {
     return (
-      <button disabled={this.validate()} className="btn btn-success d-block m-auto my-4 px-3 py-2">
+      <button
+        disabled={this.validate()}
+        className="btn btn-success d-block m-auto my-4 px-3 py-2"
+      >
         {label}
       </button>
     );
@@ -72,15 +75,18 @@ class Form extends Component {
 
   renderInput(name, label, type = "text") {
     const { data, errors } = this.state;
+
     return (
-      <Input
-        type={type}
-        name={name}
-        value={data[name]}
-        label={label}
-        onChange={this.handleChange}
-        error={errors[name]}
-      />
+      <div>
+        <Input
+          type={type}
+          name={name}
+          value={data[name]}
+          label={label}
+          onChange={this.handleChange}
+          error={errors[name]}
+        />
+      </div>
     );
   }
 }

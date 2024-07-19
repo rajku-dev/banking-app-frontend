@@ -2,17 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Home = () => {
+  const cardStyle = {
+    width: "20rem",
+    height: "12rem",
+    background: "linear-gradient(132deg, rgb(113, 143, 175) 0.00%, rgb(69, 92, 114) 48.62%)",
+    color: "#fff", 
+    border: "1px solid #FFD700", 
+  };
+
   return (
-    <div className="home">
+    <div className="home pt-4">
       <h1 className="text-center">BANK OF ORIGIN</h1>
       <h6 className="fst-italic text-center mb-5">
         Empowering Your Financial Journey with Trust and Innovation
       </h6>
       <div className="d-flex justify-content-around align-items-center mb-5">
-        <div
-          className="card mb-1 text-bg-secondary text-center border-secondary"
-          style={{ width: "20rem", height: "12rem" }}
-        >
+        <div className="card mb-1 text-light text-center" style={cardStyle}>
           <div className="card-body">
             <h5 className="card-title fw-semibold lh-lg">
               <i className="fa-solid fa-paper-plane fs-3"></i>
@@ -25,10 +30,7 @@ const Home = () => {
             </Link>
           </div>
         </div>
-        <div
-          className="card mb-3 text-bg-secondary text-center border-secondary"
-          style={{ width: "20rem", height: "12rem" }}
-        >
+        <div className="card mb-3 text-light text-center" style={cardStyle}>
           <div className="card-body">
             <h5 className="card-title fw-semibold lh-lg">
               <i className="fa-solid fa-piggy-bank fs-3"></i>
@@ -43,10 +45,7 @@ const Home = () => {
         </div>
       </div>
       <div className="d-flex justify-content-around align-items-center">
-        <div
-          className="card mb-3 text-bg-secondary text-center border-secondary"
-          style={{ width: "20rem", height: "12rem" }}
-        >
+        <div className="card mb-3 text-light text-center" style={cardStyle}>
           <div className="card-body">
             <h5 className="card-title fw-semibold lh-lg">
               <i className="fa-solid fa-money-bill-transfer fs-3"></i>
@@ -59,10 +58,7 @@ const Home = () => {
             </Link>
           </div>
         </div>
-        <div
-          className="card mb-3 text-bg-secondary text-center border-secondary"
-          style={{ width: "20rem", height: "12rem" }}
-        >
+        <div className="card mb-3 text-light text-center" style={cardStyle}>
           <div className="card-body">
             <h5 className="card-title fw-semibold lh-lg">
               <i className="fa-solid fa-coins fs-3"></i>

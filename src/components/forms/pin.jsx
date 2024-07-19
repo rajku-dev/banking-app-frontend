@@ -7,11 +7,13 @@ import { toast } from "react-toastify";
 // import auth from "../services/authService";
 
 class PINForm extends Form {
+
   state = {
     data: { accountNumber:"",oldPin:"",newPin:"",cNewPin:""},
     errors: {}
   };
-  schema = {
+
+   schema = {
     accountNumber:Joi.string().required().label("Account Number"),
     oldPin: Joi.string()
       .required()
@@ -21,7 +23,6 @@ class PINForm extends Form {
       .label("New PIN"),
     cNewPin: Joi.string()
       .required()
-      .min(2)
       .label("Confirm New PIN")
   };
 
@@ -44,7 +45,7 @@ class PINForm extends Form {
     const {errors}={...this.state}
     // if (auth.getCurrentUser()) return <Redirect to="/" />;
     return (
-      <div className="w-50 m-auto">
+      <div className="form" style={{padding:'16rem', paddingTop:'2rem'}}>
         <h1>Change PIN</h1>
         {errors && errors.backend && <div className="alert alert-danger">{errors.backend}</div>}
         <form onSubmit={this.handleSubmit}>

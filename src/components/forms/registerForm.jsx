@@ -28,26 +28,30 @@ class RegisterForm extends Form {
     errors: {},
   };
 
+
   schema = {
-    name: Joi.string().required().label("Name"),
-    email: Joi.string().required().email().label("Email Address"),
-    password: Joi.string().required().label("Password"),
-    cPassword: Joi.string().required().label("Confirm Password"),
-    age: Joi.string().required().label("Age"),
+    name: Joi.string().min(3).max(30).required().label("Name"),
+    email: Joi.string().email().required().label("Email Address"),
+    password: Joi.string().min(4).required().label("Password"),
+    cPassword: Joi.string().min(4).required().label("Confirm Password"),
+    age: Joi.number().integer().min(18).max(120).required().label("Age"),
     gender: Joi.string().required().label("Gender"),
     DOB: Joi.date().required().label("DOB"),
-    aadhaarCard: Joi.string().required().label("Aadhar Card"),
-    panCard: Joi.string().required().label("PAN Card").min(10).max(10),
-    PhoneNo: Joi.string().required().label("Phone Number").min(10).max(10),
-    FatherName: Joi.string().required().label("Father Name"),
-    pin: Joi.string().required().label("PIN"),
-    city: Joi.string().required().label("City"),
-    state: Joi.string().required().label("State"),
-    country: Joi.string().required().label("Country"),
-    bankBalance: Joi.string().required().label("Bank Balance"),
+    aadhaarCard: Joi.string().length(12).label("Aadhaar Card"),
+    panCard: Joi.string().length(10).required().label("PAN Card"),
+    PhoneNo: Joi.string().length(10).regex(/^[0-9]+$/).required().label("Phone Number"),
+    FatherName: Joi.string().min(3).max(30).required().label("Father's Name"),
+    pin: Joi.string().min(3).max(4).regex(/^[0-9]+$/).required().label("PIN"),
+    city: Joi.string().min(2).max(50).required().label("City"),
+    state: Joi.string().min(2).max(50).required().label("State"),
+    country: Joi.string().min(2).max(50).required().label("Country"),
+    bankBalance: Joi.number().min(0).required().label("Bank Balance"),
     accountType: Joi.string().required().label("Account Type"),
-    bankName: Joi.string().required().label("Bank Name"),
+    bankName: Joi.string().min(3).max(50).required().label("Bank Name")
   };
+
+
+
 
    doSubmit = async () => {
     try {
@@ -66,7 +70,7 @@ class RegisterForm extends Form {
   render() {
     const { errors } = this.state;
     return (
-      <div className="w-50 m-auto">
+      <div className="form" style={{padding:'16rem', paddingTop:'2rem'}}>
         <h1>Registration Form</h1>
         <form onSubmit={this.handleSubmit}>
           {errors && errors.backend && <div className="alert alert-danger">{errors.backend}</div>}

@@ -35,7 +35,6 @@ const Navbar = () => {
   const transPdf = (trans) => {
     const pdfElement = document.createElement("div");
 
-    // Create the content for the PDF (you can customize this based on your design)
     const pdfContent = trans
       .map((transaction) => {
         const sender =
@@ -71,7 +70,6 @@ const Navbar = () => {
 
     pdfElement.innerHTML = pdfContent;
 
-    // Options for html2pdf
     const options = {
       filename: "transaction_statement.pdf",
       image: { type: "jpeg", quality: 0.98 },
@@ -119,7 +117,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary mb-3">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary p-2">
       <div className="container-fluid">
         <Link className="navbar-brand active" to="/">
           <img src={bankLogo} style={{ height: "90px" }} alt="Bank Logo" />
@@ -197,11 +195,6 @@ const Navbar = () => {
               </NavLink>
               <ul className="dropdown-menu">
                 <li>
-                  <NavLink className="dropdown-item" to="/fd">
-                    Request FD
-                  </NavLink>
-                </li>
-                <li>
                   <NavLink className="dropdown-item" to="/fd-withdraw">
                     Withdraw FD
                   </NavLink>
@@ -222,7 +215,7 @@ const Navbar = () => {
             </li>
           </ul>
           {user ? (
-            <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+            <ul className="navbar-nav ms-auto mb-2 mb-lg-0 profile">
               <li className="nav-item dropdown">
                 <NavLink
                   className="nav-link dropdown-toggle"

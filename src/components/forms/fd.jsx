@@ -49,7 +49,7 @@ class FDForm extends Form {
   };
 
   schema = {
-    amount: Joi.string().required().label("Amount"),
+    amount: Joi.number().integer().required().label("Amount"),
     minTime: Joi.string().required().label("Min Duration"),
     maxTime: Joi.string().required().label("Max Duration"),
     interest: Joi.string().required().label("Interest"),
@@ -61,7 +61,8 @@ class FDForm extends Form {
   render() {
     const { errors } = this.state;
     return (
-      <div className="w-50 m-auto">
+      <div className="form" style={{padding:'16rem', paddingTop:'2rem'}}>
+      
         <h1>Issue Fixed Deposit</h1>
         {errors && errors.backend && (
           <div className="alert alert-danger">{errors.backend}</div>

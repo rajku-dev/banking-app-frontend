@@ -14,10 +14,10 @@ class Transfer extends Form {
   schema = {
     accountNumber: Joi.string().required().label("Account Number"),
     pin: Joi.string().required().label("PIN"),
-    amount: Joi.string().required().label("Amount"),
+    amount: Joi.number().min(1).required().label("Amount"),
     bankName: Joi.string().required().label("Bank Name"),
   };
-  
+
     doSubmit = async () => {
       try {
         const { data } = this.state;
@@ -37,7 +37,7 @@ class Transfer extends Form {
     const { errors } = { ...this.state };
     // if (auth.getCurrentUser()) return <Redirect to="/" />;
     return (
-      <div className="w-50 m-auto">
+      <div className="form" style={{padding:'16rem', paddingTop:'2rem'}}>
         <h2>Money Transfer Form</h2>
         {errors && errors.backend && (
           <div className="alert alert-danger">{errors.backend}</div>
