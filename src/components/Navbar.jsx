@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import bankLogo from "../bank3801.jpg";
 import auth from "../services/authService";
 import { getFds } from "../services/fdServices";
 import { deleteUser } from "../services/userService";
@@ -120,7 +119,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg bg-body-tertiary p-2">
       <div className="container-fluid">
         <Link className="navbar-brand active" to="/">
-          <img src={bankLogo} style={{ height: "90px" }} alt="Bank Logo" />
+          <img src='/bank3801.jpg' style={{ height: "90px" }} alt="Bank Logo" />
         </Link>
         <button
           className="navbar-toggler"

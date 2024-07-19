@@ -45,7 +45,7 @@ class PINForm extends Form {
     const {errors}={...this.state}
     // if (auth.getCurrentUser()) return <Redirect to="/" />;
     return (
-      <div className="form" style={{padding:'16rem', paddingTop:'2rem'}}>
+      <div className="form">
         <h1>Change PIN</h1>
         {errors && errors.backend && <div className="alert alert-danger">{errors.backend}</div>}
         <form onSubmit={this.handleSubmit}>

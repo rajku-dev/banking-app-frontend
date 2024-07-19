@@ -70,7 +70,7 @@ class RegisterForm extends Form {
   render() {
     const { errors } = this.state;
     return (
-      <div className="form" style={{padding:'16rem', paddingTop:'2rem'}}>
+      <div className="form">
         <h1>Registration Form</h1>
         <form onSubmit={this.handleSubmit}>
           {errors && errors.backend && <div className="alert alert-danger">{errors.backend}</div>}
