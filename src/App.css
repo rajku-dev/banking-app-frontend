@@ -1,89 +1,91 @@
-/* Default styles for all screen sizes */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
-html, body {
-    font-size: 20px;
-    background: #fffefe;
-    font-family: 'Poppins', sans-serif;
-    line-height: 3.2;
-    box-sizing: border-box;
-    margin: 0;
-    top: 0;
-    left: 0;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+
+html,
+body {
+  font-size: 20px;
+  background: #fffefe;
+  font-family: "Poppins", sans-serif;
+  line-height: 3.2;
+  box-sizing: border-box;
+  margin: 0;
+  top: 0;
+  left: 0;
 }
 
 ul {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 .navbar {
-    background: #fff;
-    padding: 1rem 1em;
-    min-height: 10vh;
+  background: #fff;
+  padding: 1rem 1em;
+  min-height: 10vh;
 }
 
 .navbar .navbar-brand a {
-    padding: 1rem 0;
-    display: block;
-    text-decoration: none;
+  padding: 1rem 0;
+  display: block;
+  text-decoration: none;
 }
 
 .navbar-toggler {
-    background: #e74c3c;
-    border: none;
-    padding: 10px 6px;
-    outline: none;
+  background: #e74c3c;
+  border: none;
+  padding: 10px 6px;
+  outline: none;
 }
 
 .navbar-toggler span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: #fff;
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #fff;
 }
 
 .nav-item {
-    margin-left: 60px;
+  margin-left: 60px;
 }
 
 /* Media query for mobile phones */
 @media (max-width: 768px) {
-    html, body {
-        font-size: 16px;
-        line-height: 2.8;
-    }
+  html,
+  body {
+    font-size: 16px;
+    line-height: 2.8;
+  }
 
-    .navbar {
-        padding: 0.5rem 1em; 
-    }
+  .navbar {
+    padding: 0.5rem 1em;
+  }
 
-    .navbar-toggler {
-        padding: 8px 6px; 
-    }
+  .navbar-toggler {
+    padding: 8px 6px;
+  }
 
-    .nav-item {
-        margin-left: 30px; 
-    }
+  .nav-item {
+    margin-left: 30px;
+  }
 }
 
 /* Default styles for larger screens */
 .home .card {
-    width: 20rem;
-    height: 12rem;
+  width: 20rem;
+  height: 12rem;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+  .home .d-flex {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
   }
-  
-  /* Media query for mobile screens */
-  @media (max-width: 768px) {
-    .home .d-flex {
-      flex-direction: column;
-      align-items: center;
-      gap: 3rem;
-    }
-  
-    .home .card {
-      margin-bottom: 1rem;
-    }
+
+  .home .card {
+    margin-bottom: 1rem;
   }
-  
+}
+
 /* Default styles */
 .table h1 {
   margin-left: 25%;
@@ -99,7 +101,6 @@ ul {
 
 /* Media query for mobile screens */
 @media (max-width: 768px) {
-
   .optionsTable h1 {
     margin-left: 0;
     font-size: 1.5rem;
@@ -138,36 +139,184 @@ ul {
 
 .dropdown-item:hover {
   background-color: #198754;
-  color:#fff;
+  color: #fff;
   transition: 0.3s;
 }
 
-.text-danger:hover{
-    background-color: #ffaaaa;
-    transition: 0.5s;
+.text-danger:hover {
+  background-color: #ffaaaa;
+  transition: 0.5s;
 }
 
-/* styles.css */
-.special-form {
-  position: relative;
-  overflow: hidden;
-  padding: 16rem 0 0 0; /* Adjust padding if necessary */
-}
+/* General styles */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
 
-.background-video {
-  position: absolute;
+html,
+body {
+  font-size: 20px;
+  background: #fffefe;
+  font-family: "Poppins", sans-serif;
+  line-height: 3.2;
+  box-sizing: border-box;
+  margin: 0;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -1;
 }
 
-.form-content {
-  position: relative;
-  z-index: 1;
-  padding: 2rem; /* Adjust padding if needed */
+ul {
+  list-style-type: none;
 }
 
+.navbar {
+  background: #fff;
+  padding: 1rem 1em;
+  min-height: 10vh;
+}
 
+.navbar .navbar-brand a {
+  padding: 1rem 0;
+  display: block;
+  text-decoration: none;
+}
+
+.navbar-toggler {
+  background: #e74c3c;
+  border: none;
+  padding: 10px 6px;
+  outline: none;
+}
+
+.navbar-toggler span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #fff;
+}
+
+.nav-item {
+  margin-left: 60px;
+}
+
+/* Media query for mobile phones */
+@media (max-width: 768px) {
+  html,
+  body {
+    font-size: 16px;
+    line-height: 2.8;
+  }
+
+  .navbar {
+    padding: 0.5rem 1em;
+  }
+
+  .navbar-toggler {
+    padding: 8px 6px;
+  }
+
+  .nav-item {
+    margin-left: 30px;
+  }
+}
+
+/* Default styles for larger screens */
+.home .card {
+  width: 20rem;
+  height: 12rem;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+  .home .d-flex {
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .home .card {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Default styles */
+.table h1 {
+  margin-left: 25%;
+  margin-top: 50px;
+}
+
+.table {
+  width: 85%;
+  margin: auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+  .optionsTable h1 {
+    margin-left: 0;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .optionsTable {
+    width: 100%;
+    margin: 1rem;
+    box-shadow: none;
+  }
+
+  .optionsTable table {
+    width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .optionsTable th,
+  .optionsTable td {
+    padding: 0.5rem;
+  }
+
+  .optionsTable .btn {
+    width: 100%;
+    padding: 0.5rem;
+  }
+}
+
+.navbar {
+  background-color: #343a40; /* Dark background color */
+}
+
+.nav-link:hover {
+  color: #17a2b8; /* Light blue color on hover */
+}
+
+.dropdown-item:hover {
+  background-color: #198754;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.text-danger:hover {
+  background-color: #ffaaaa;
+  transition: 0.5s;
+}
+
+/* General styles */
+.form {
+  padding: 16rem;
+  padding-top: 2rem; /* Large padding for larger screens */
+}
+
+/* Media query for mobile screens */
+@media (max-width: 768px) {
+  .form {
+    padding: 1rem;
+    padding-top: 2rem; /* Reduced padding for mobile screens */
+  }
+}
+
+/* Optional: Further adjustments */
+@media (max-width: 576px) {
+  .form {
+    padding: 1rem;
+    padding-top: 2rem; /* Even smaller padding for very small screens */
+  }
+}

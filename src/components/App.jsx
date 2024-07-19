@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import logo from "../logo.svg";
 import Navbar from './Navbar';
 import Home from './Home';
 import { ToastContainer } from "react-toastify";

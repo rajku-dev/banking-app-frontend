@@ -6,8 +6,7 @@ const Home = () => {
     width: "20rem",
     height: "12rem",
     background: "linear-gradient(132deg, rgb(113, 143, 175) 0.00%, rgb(69, 92, 114) 48.62%)",
-    color: "#fff", 
-    border: "1px solid #FFD700", 
+    color: "#fff",  
   };
 
   return (

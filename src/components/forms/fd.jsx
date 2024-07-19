@@ -61,8 +61,7 @@ class FDForm extends Form {
   render() {
     const { errors } = this.state;
     return (
-      <div className="form" style={{padding:'16rem', paddingTop:'2rem'}}>
-      
+      <div className="form">
         <h1>Issue Fixed Deposit</h1>
         {errors && errors.backend && (
           <div className="alert alert-danger">{errors.backend}</div>
