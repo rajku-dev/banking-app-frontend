@@ -10,8 +10,7 @@ const Navbar = () => {
   const user = auth.getCurrentUser();
   const handleDeleteUser = async () => {
     await deleteUser();
-};
-
+  };
 
   const handleFdPdf = async () => {
     try {
@@ -40,30 +39,27 @@ const Navbar = () => {
           transaction.senderName === transaction.recieverName
             ? "Self"
             : transaction.senderName;
+
         return `<div style="border: 1px solid #ccc; padding: 10px; margin: auto; background-color: #f0f0f0;">
-                <h1 style="text-align: center; background-color: #e0e0e0; padding: 8px; margin-bottom: 10px;">Transaction Statement</h1>
-                <p><strong>Sender Name:</strong> ${sender}</p>
-                <p><strong>Sender Email:</strong> ${transaction.senderEmail}</p>
-                <p><strong>Sender Account Number:</strong> ${
-                  transaction.senderAccountNo
-                }</p>
-                <p><strong>Receiver Name:</strong> ${
-                  transaction.recieverName
-                }</p>
-                <p><strong>Receiver Email:</strong> ${
-                  transaction.recieverEmail
-                }</p>
-                <p><strong>Receiver Account Number:</strong> ${
-                  transaction.recieverAccountNo
-                }</p>
-                <p><strong>Amount:</strong> ${transaction.amount}</p>
-                <p><strong>Transaction Type:</strong> ${
-                  transaction.transactionType
-                }</p>
-                <p><strong>Transaction Date:</strong> ${new Date(
-                  transaction.transactionDate
-                ).toLocaleString()}</p>
-            </div>`;
+              <h1 style="text-align: center; background-color: #e0e0e0; padding: 8px; margin-bottom: 10px;">Transaction Statement</h1>
+              <p><strong>Transaction Type:</strong> ${
+                transaction.transactionType
+              }</p>
+              <p><strong>Amount:</strong> ${transaction.amount}</p>
+              <p><strong>Transaction Date:</strong> ${new Date(
+                transaction.transactionDate
+              ).toLocaleString()}</p>
+              ${
+                transaction.transactionType === "transfer"
+                  ? `<p><strong>Sender Email:</strong> ${transaction.senderEmail}</p>
+                     <p><strong>Sender Account Number:</strong> ${transaction.senderAccountNo}</p>
+                     <p><strong>Receiver Name:</strong> ${transaction.recieverName}</p>
+                     <p><strong>Receiver Email:</strong> ${transaction.recieverEmail}</p>
+                     <p><strong>Receiver Account Number:</strong> ${transaction.recieverAccountNo}</p>`
+                  : `<p><strong>Email:</strong> ${transaction.senderEmail}</p>
+                  <p><strong>Account:</strong> ${transaction.senderAccountNo}</p>`
+              }
+          </div>`;
       })
       .join("");
 
@@ -71,7 +67,7 @@ const Navbar = () => {
 
     const options = {
       filename: "transaction_statement.pdf",
-      image: { type: "jpeg", quality: 0.98 },
+      image: { type: "jpeg", quality: 0.88 },
       html2canvas: { scale: 2 },
       jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
     };
@@ -119,7 +115,7 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg bg-body-tertiary p-2">
       <div className="container-fluid">
         <Link className="navbar-brand active" to="/">
-          <img src='/bank3801.jpg' style={{ height: "90px" }} alt="Bank Logo" />
+          <img src="/bank3801.jpg" style={{ height: "90px" }} alt="Bank Logo" />
         </Link>
         <button
           className="navbar-toggler"

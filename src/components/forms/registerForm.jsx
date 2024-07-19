@@ -51,8 +51,6 @@ class RegisterForm extends Form {
   };
 
 
-
-
    doSubmit = async () => {
     try {
       const {data}= this.state;
