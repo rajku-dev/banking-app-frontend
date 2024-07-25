@@ -1,8 +1,9 @@
 import React from "react";
 // import { Redirect } from "react-router-dom";
+import { toast } from "react-toastify";
 import Joi from "joi-browser";
 import Form from "../common/form";
-import {transfer} from '../../services/transactionService'
+import { transfer } from "../../services/transactionService";
 
 // import auth from "../services/authService";
 
@@ -18,20 +19,26 @@ class Transfer extends Form {
     bankName: Joi.string().required().label("Bank Name"),
   };
 
-    doSubmit = async () => {
-      try {
-        const { data } = this.state;
-        await transfer(data);
-        window.location='/';
-
-      } catch (ex) {
-        if (ex.response && ex.response.status >= 400 && ex.response.status<500 ) {
-          const errors = { ...this.state.errors };
-          errors.backend = ex.response.data;
-          this.setState({ errors });
-        }
+  doSubmit = async () => {
+    try {
+      const { data } = this.state;
+      await transfer(data);
+      toast.success(`${data.amount} has been debited from your account`);
+      setTimeout(() => {
+        window.location = "/";
+      }, 3000);
+    } catch (ex) {
+      if (
+        ex.response &&
+        ex.response.status >= 400 &&
+        ex.response.status < 500
+      ) {
+        const errors = { ...this.state.errors };
+        errors.backend = ex.response.data;
+        this.setState({ errors });
       }
-    };
+    }
+  };
 
   render() {
     const { errors } = { ...this.state };

@@ -73,9 +73,8 @@ class Form extends Component {
     );
   }
 
-  renderInput(name, label, type = "text") {
+  renderInput(name, label, type = "text",readOnly=false) {
     const { data, errors } = this.state;
-
     return (
       <div>
         <Input
@@ -85,6 +84,7 @@ class Form extends Component {
           label={label}
           onChange={this.handleChange}
           error={errors[name]}
+          readOnly={readOnly}
         />
       </div>
     );

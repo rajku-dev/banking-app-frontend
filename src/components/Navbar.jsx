@@ -32,23 +32,20 @@ const Navbar = () => {
 
   const transPdf = (trans) => {
     const pdfElement = document.createElement("div");
-
+  
     const pdfContent = trans
       .map((transaction) => {
         const sender =
           transaction.senderName === transaction.recieverName
             ? "Self"
             : transaction.senderName;
-
-        return `<div style="border: 1px solid #ccc; padding: 10px; margin: auto; background-color: #f0f0f0;">
-              <h1 style="text-align: center; background-color: #e0e0e0; padding: 8px; margin-bottom: 10px;">Transaction Statement</h1>
-              <p><strong>Transaction Type:</strong> ${
-                transaction.transactionType
-              }</p>
+        return `
+          <div class="pdf-section">
+          <h1 class="pdf-header pdf-title">Transaction Statement</h1>
+            <div>
+              <p><strong>Transaction Type:</strong> ${transaction.transactionType}</p>
               <p><strong>Amount:</strong> ${transaction.amount}</p>
-              <p><strong>Transaction Date:</strong> ${new Date(
-                transaction.transactionDate
-              ).toLocaleString()}</p>
+              <p><strong>Transaction Date:</strong> ${new Date(transaction.transactionDate).toLocaleString()}</p>
               ${
                 transaction.transactionType === "transfer"
                   ? `<p><strong>Sender Email:</strong> ${transaction.senderEmail}</p>
@@ -57,39 +54,39 @@ const Navbar = () => {
                      <p><strong>Receiver Email:</strong> ${transaction.recieverEmail}</p>
                      <p><strong>Receiver Account Number:</strong> ${transaction.recieverAccountNo}</p>`
                   : `<p><strong>Email:</strong> ${transaction.senderEmail}</p>
-                  <p><strong>Account:</strong> ${transaction.senderAccountNo}</p>`
+                     <p><strong>Account:</strong> ${transaction.senderAccountNo}</p>`
               }
+            </div>
           </div>`;
       })
       .join("");
-
+  
     pdfElement.innerHTML = pdfContent;
-
+  
     const options = {
       filename: "transaction_statement.pdf",
       image: { type: "jpeg", quality: 0.88 },
       html2canvas: { scale: 2 },
       jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
     };
-
-    // Generate PDF
+  
     html2pdf().from(pdfElement).set(options).save();
   };
-
+  
   const fdPdf = (fds) => {
     const pdfElement = document.createElement("div");
-
+  
     const pdfContent = fds
       .map(
         (fd) =>
-          `<div style="border: 1px solid #ccc; padding: 10px; margin: auto; background-color: #f0f0f0;">
-              <h1 style="text-align: center; background-color: #e0e0e0; padding: 8px; margin-bottom: 10px;">Fixed Deposit Register</h1>
+          `<div class="pdf-section">
+              <h1 class="pdf-header pdf-title">Fixed Deposit Register</h1>
               <p><strong>Name:</strong> ${fd.name}</p>
               <p><strong>Account Number:</strong> ${fd.accountNumber}</p>
               <p><strong>Amount:</strong> ${fd.amount}</p>
-              <p><strong>Interest(per day):</strong> ${fd.interest}</p>
-              <p><strong>Min Time(days):</strong> ${fd.minTime}</p>
-              <p><strong>Max Time(days):</strong> ${fd.maxTime}</p>
+              <p><strong>Interest (per day):</strong> ${fd.interest}</p>
+              <p><strong>Min Time (days):</strong> ${fd.minTime}</p>
+              <p><strong>Max Time (days):</strong> ${fd.maxTime}</p>
               <p><strong>FD Date:</strong> ${new Date(
                 fd.fdDate
               ).toLocaleString()}</p>
@@ -98,18 +95,19 @@ const Navbar = () => {
           </div>`
       )
       .join("");
-
+  
     pdfElement.innerHTML = pdfContent;
-
+  
     const options = {
       filename: "fixed_deposit_passbook.pdf",
       image: { type: "jpeg", quality: 0.98 },
       html2canvas: { scale: 2 },
       jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
     };
-
+  
     html2pdf().from(pdfElement).set(options).save();
   };
+  
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary p-2">
@@ -172,7 +170,7 @@ const Navbar = () => {
                       className="dropdown-item"
                       onClick={handleTransactionPdf}
                     >
-                      Download History
+                      Download History <i class="fa-solid fa-file"></i>
                     </button>
                   )}
                 </li>
@@ -202,7 +200,7 @@ const Navbar = () => {
                 <li>
                   {user && (
                     <button className="dropdown-item" onClick={handleFdPdf}>
-                      Download History
+                      Download History  <i class="fa-solid fa-file"></i>
                     </button>
                   )}
                 </li>

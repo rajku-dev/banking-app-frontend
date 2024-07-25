@@ -4,6 +4,8 @@ import Form from "../common/form";
 import {getUser} from "../../services/userService"; 
 import {makeFD} from "../../services/fdServices"
 
+
+
 class FDForm extends Form {
   state = {
     data: {
@@ -68,10 +70,10 @@ class FDForm extends Form {
         )}
         <form onSubmit={this.handleSubmit}>
           {this.renderInput("amount", "Amount")}
-          {this.renderInput("minTime", "Minimum Duration in days")}
-          {this.renderInput("maxTime", "Maximum Duration in days")}
-          {this.renderInput("interest", "Interest Applicable")}
-          {this.renderInput("age", "Your age")}
+          {this.renderInput("minTime", "Minimum Duration in days","text",true)}
+          {this.renderInput("maxTime", "Maximum Duration in days","text",true)}
+          {this.renderInput("interest", "Interest Applicable","text",true)}
+          {this.renderInput("age", "Your age","text",true)}
           {this.renderInput("nominee", "Nominee")}
           {this.renderInput("pin", "Your PIN", "password")}
           {this.renderButton("Request FD")}

@@ -1,35 +1,37 @@
-import {jwtDecode} from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import axios from "axios";
-import http from './httpService'
+import http from "./httpService";
+import { toast } from "react-toastify";
 
 const api = `${process.env.REACT_APP_API}/auth`;
 
-const tokenKey='token'
+const tokenKey = "token";
 http.setJwt(getJwt());
 
 async function register(user) {
-  const response = await axios.post(api + "/register",  user );
-  loginWithJwt(response.headers['x-auth-token'])
+  const response = await axios.post(api + "/register", user);
+  loginWithJwt(response.headers["x-auth-token"]);
 }
 
-
 async function login(user) {
-  console.log(user)
+  console.log(user);
   const { data: jwt } = await axios.post(api + "/login", user);
-  console.log(jwt)
+  console.log(jwt);
   loginWithJwt(jwt);
 }
 
 function loginWithJwt(jwt) {
-  console.log(jwt)
+  console.log(jwt);
   localStorage.setItem(tokenKey, jwt);
   http.setJwt(jwt);
 }
 
 function logout() {
   localStorage.removeItem(tokenKey);
-  http.setJwt(null);
-  window.location='/'
+  toast.info("User logged out");
+  setTimeout(() => {
+    window.location = "/";
+  }, 1500);
 }
 
 function getCurrentUser() {

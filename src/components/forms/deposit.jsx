@@ -1,8 +1,9 @@
 import React from "react";
-import { toast } from 'react-toastify';
 import Joi from "joi-browser";
 import Form from "../common/form";
 import { deposit } from '../../services/transactionService';
+import { toast } from "react-toastify";
+
 
 class DepositForm extends Form {
   state = {
@@ -20,8 +21,10 @@ class DepositForm extends Form {
     try {
       const { data } = this.state;
       await deposit(data);
-      toast.success("Successfully Deposited!");
-      window.location='/'
+      toast.success(`${data.amount} successfully added to your account`)
+      setTimeout(() => {
+        window.location = '/';
+      }, 3000);
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };

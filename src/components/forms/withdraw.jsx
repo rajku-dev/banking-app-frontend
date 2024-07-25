@@ -25,8 +25,10 @@ class WithdrawForm extends Form {
     try {
       const { data } = this.state;
       await withdraw(data);
-      toast.success("Withdrawal successful!")
-      window.location='/';
+      toast.success(`${data.amount} successfully debited from your account`)
+      setTimeout(() => {
+        window.location = '/';
+      }, 3000);
     } catch (ex) {
       if (ex.response && ex.response.status === 400) {
         const errors = { ...this.state.errors };

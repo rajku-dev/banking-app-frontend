@@ -2,6 +2,8 @@ import React from "react";
 import Joi from "joi-browser";
 import Form from "../common/form";
 import auth from '../../services/authService'
+import { toast } from "react-toastify";
+
 
 class LoginForm extends Form {
   state = {
@@ -26,7 +28,10 @@ class LoginForm extends Form {
       const { data } = this.state;
       console.log(data)
       await auth.login(data);
-      window.location='/'
+      toast("Welcome To Bank Of Origin");
+      setTimeout(() => {
+        window.location = "/";
+      }, 1500);
     } catch (ex) {
       console.log(ex)
       if (ex.response && ex.response.status >= 400 && ex.response.status<500) {

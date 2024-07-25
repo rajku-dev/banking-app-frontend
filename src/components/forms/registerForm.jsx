@@ -2,6 +2,7 @@ import React from "react";
 import Joi from "joi-browser";
 import Form from "../common/form";
 import auth from "../../services/authService"
+import { toast } from "react-toastify";
 
 class RegisterForm extends Form {
   state = {
@@ -55,7 +56,10 @@ class RegisterForm extends Form {
     try {
       const {data}= this.state;
       await auth.register(data);
-      window.location = "/";
+      toast.success("User registration successful");
+      setTimeout(() => {
+        window.location = "/";
+      }, 3000);
     } catch (ex) {
       if (ex.response && ex.response.status >= 400 && ex.response.status<500) {
         const errors = { ...this.state.errors };
@@ -69,7 +73,7 @@ class RegisterForm extends Form {
     const { errors } = this.state;
     return (
       <div className="form">
-        <h1>Registration Form</h1>
+        <h1>Create Account</h1>
         <form onSubmit={this.handleSubmit}>
           {errors && errors.backend && <div className="alert alert-danger">{errors.backend}</div>}
           {this.renderInput("name", "Name")}

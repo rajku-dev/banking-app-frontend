@@ -3,6 +3,7 @@ import { Redirect } from "react-router-dom";
 import Joi from "joi-browser";
 import Form from "../common/form";
 import { withdrawFD } from "../../services/fdServices";
+import { toast } from "react-toastify";
 // import auth from "../services/authService";
 
 class FDWithdrawForm extends Form {
@@ -22,8 +23,10 @@ class FDWithdrawForm extends Form {
     try {
       const { data } = this.state;
       await withdrawFD(data);
-      window.location='/';
-      
+      toast.success("FD withrawal successful")
+      setTimeout(() => {
+        window.location = '/';
+      }, 3000);
     } catch (ex) {
       if (ex.response && ex.response.status>=400 && ex.response.status<500) {
         const errors = { ...this.state.errors };

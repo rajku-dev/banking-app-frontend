@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getUser } from "../services/userService";
+import { motion } from "framer-motion";
 
 class Balance extends Component {
   state = {
@@ -11,14 +12,14 @@ class Balance extends Component {
   };
 
   async componentDidMount() {
-      const { data } = await getUser();
-      this.setState({
-        balance: data.bankBalance,
-        account: data.accountNumber,
-        bank: data.bankName,
-        createdAt: new Date(data.openingDate).toLocaleDateString(),
-        loading: false 
-      });
+    const { data } = await getUser();
+    this.setState({
+      balance: data.bankBalance,
+      account: data.accountNumber,
+      bank: data.bankName,
+      createdAt: new Date(data.openingDate).toLocaleDateString(),
+      loading: false 
+    });
   }
 
   formatBalance = (num) => {
@@ -63,7 +64,13 @@ class Balance extends Component {
     return (
       <div className="container pt-5 pb-5">
         <div className="col-md-6 offset-md-3">
-          <div className="card text-center" style={cardStyle}>
+          <motion.div
+            className="card text-center"
+            style={cardStyle}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="card-body">
               <h2 className="card-title" style={{ color: "#484848", fontWeight: "500" }}>Account Details</h2>
               <p className="card-text" style={textStyle}>
@@ -79,7 +86,7 @@ class Balance extends Component {
                 <strong>Bank: </strong> {bank}
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     );
