@@ -110,7 +110,7 @@ const Navbar = () => {
   
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary p-2">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary p-0" >
       <div className="container-fluid">
         <Link className="navbar-brand active" to="/">
           <img src="/bank3801.jpg" style={{ height: "90px" }} alt="Bank Logo" />

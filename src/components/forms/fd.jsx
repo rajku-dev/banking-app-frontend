@@ -3,7 +3,7 @@ import Joi from "joi-browser";
 import Form from "../common/form";
 import {getUser} from "../../services/userService"; 
 import {makeFD} from "../../services/fdServices"
-
+import { toast } from "react-toastify";
 
 
 class FDForm extends Form {
@@ -40,7 +40,10 @@ class FDForm extends Form {
     try {
       const {data}= this.state;
       await makeFD(data);
-      window.location = "/";
+      toast.success("Your FD was made successfully");
+      setTimeout(() => {
+        window.location = "/";
+      }, 1500);
     } catch (ex) {
       if (ex.response && ex.response.status >= 400 && ex.response.status<500) {
         const errors = { ...this.state.errors };

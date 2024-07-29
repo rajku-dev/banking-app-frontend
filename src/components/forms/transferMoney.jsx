@@ -45,7 +45,7 @@ class Transfer extends Form {
     // if (auth.getCurrentUser()) return <Redirect to="/" />;
     return (
       <div className="form">
-        <h2>Money Transfer Form</h2>
+        <h2>Net Banking</h2>
         {errors && errors.backend && (
           <div className="alert alert-danger">{errors.backend}</div>
         )}

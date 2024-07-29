@@ -1,40 +1,36 @@
 import React from "react";
 import Joi from "joi-browser";
 import Form from "../common/form";
-import auth from '../../services/authService'
+import auth from "../../services/authService";
 import { toast } from "react-toastify";
-
 
 class LoginForm extends Form {
   state = {
-    data: { accountNumber: "", password: "" ,email:""},
-    errors: {}
+    data: { accountNumber: "", password: "", email: "" },
+    errors: {},
   };
   schema = {
-    accountNumber: Joi.string()
-      .required()
-      .label("Account Number"),
-      email: Joi.string()
-      .required()
-      .label("Account Number"),
-    password: Joi.string()
-      .required()
-      .min(2)
-      .label("Password")
+    accountNumber: Joi.string().required().label("Account Number"),
+    email: Joi.string().required().label("Account Number"),
+    password: Joi.string().required().min(2).label("Password"),
   };
 
   doSubmit = async () => {
     try {
       const { data } = this.state;
-      console.log(data)
+      console.log(data);
       await auth.login(data);
       toast("Welcome To Bank Of Origin");
       setTimeout(() => {
         window.location = "/";
       }, 1500);
     } catch (ex) {
-      console.log(ex)
-      if (ex.response && ex.response.status >= 400 && ex.response.status<500) {
+      console.log(ex);
+      if (
+        ex.response &&
+        ex.response.status >= 400 &&
+        ex.response.status < 500
+      ) {
         const errors = { ...this.state.errors };
         errors.backend = ex.response.data;
         this.setState({ errors });
@@ -43,12 +39,16 @@ class LoginForm extends Form {
   };
 
   render() {
-    const {errors}={...this.state}
+    const { errors } = { ...this.state };
     // if (auth.getCurrentUser()) return <Redirect to="/" />;
     return (
-      <div className="form">
+      <div
+        className="form loginForm"
+      >
         <h1>Login Form</h1>
-        {errors && errors.backend && <div className="alert alert-danger">{errors.backend}</div>}
+        {errors && errors.backend && (
+          <div className="alert alert-danger">{errors.backend}</div>
+        )}
         <form onSubmit={this.handleSubmit}>
           {this.renderInput("accountNumber", "Account Number")}
           {this.renderInput("password", "Password", "password")}
