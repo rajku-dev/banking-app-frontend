@@ -183,3 +183,17 @@ ul {
   font-size: 1.5em;
 }
 
+
+.nav-link:hover
+{
+  background-color: #f0f0f0;
+  color: #007bff !important;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-item {
+  padding: 10px 20px;
+}
+
+
+

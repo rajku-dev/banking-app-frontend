@@ -87,7 +87,7 @@ const Navbar = () => {
               <p><strong>Interest (per day):</strong> ${fd.interest}</p>
               <p><strong>Min Time (days):</strong> ${fd.minTime}</p>
               <p><strong>Max Time (days):</strong> ${fd.maxTime}</p>
-              <p><strong>FD Date:</strong> ${new Date(
+              <p><strong>FD Date (mm/dd/yy):</strong> ${new Date(
                 fd.fdDate
               ).toLocaleString()}</p>
               <p><strong>Token:</strong> ${fd.token}</p>
@@ -220,11 +220,6 @@ const Navbar = () => {
                   {user.name.split(" ")[0]}
                 </NavLink>
                 <ul className="dropdown-menu">
-                  <li>
-                    <NavLink className="dropdown-item" to="/password">
-                      Change Password
-                    </NavLink>
-                  </li>
                   <li>
                     <NavLink className="dropdown-item" to="/pin">
                       Change PIN
