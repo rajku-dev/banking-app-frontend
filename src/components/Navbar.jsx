@@ -50,9 +50,9 @@ const Navbar = () => {
                 transaction.transactionType === "transfer"
                   ? `<p><strong>Sender Email:</strong> ${transaction.senderEmail}</p>
                      <p><strong>Sender Account Number:</strong> ${transaction.senderAccountNo}</p>
-                     <p><strong>Receiver Name:</strong> ${transaction.recieverName}</p>
-                     <p><strong>Receiver Email:</strong> ${transaction.recieverEmail}</p>
-                     <p><strong>Receiver Account Number:</strong> ${transaction.recieverAccountNo}</p>`
+                     <p><strong>Receiver Name:</strong> ${transaction.receiverName}</p>
+                     <p><strong>Receiver Email:</strong> ${transaction.receiverEmail}</p>
+                     <p><strong>Receiver Account Number:</strong> ${transaction.receiverAccountNo}</p>`
                   : `<p><strong>Email:</strong> ${transaction.senderEmail}</p>
                      <p><strong>Account:</strong> ${transaction.senderAccountNo}</p>`
               }
@@ -60,7 +60,7 @@ const Navbar = () => {
           </div>`;
       })
       .join("");
-  
+
     pdfElement.innerHTML = pdfContent;
   
     const options = {
