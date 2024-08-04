@@ -43,7 +43,7 @@ const Navbar = () => {
           <div class="pdf-section">
           <h1 class="pdf-header pdf-title">Transaction Statement</h1>
             <div>
-              <p><strong>Transaction Type:</strong> ${transaction.transactionType}</p>
+              <p><strong>Transaction Type:</strong> ${transaction.transactionType.toUpperCase()}</p>
               <p><strong>Amount:</strong> ${transaction.amount}</p>
               <p><strong>Transaction Date:</strong> ${new Date(transaction.transactionDate).toLocaleString()}</p>
               ${
@@ -62,7 +62,7 @@ const Navbar = () => {
       .join("");
 
     pdfElement.innerHTML = pdfContent;
-  
+
     const options = {
       filename: "transaction_statement.pdf",
       image: { type: "jpeg", quality: 0.88 },
@@ -75,7 +75,7 @@ const Navbar = () => {
   
   const fdPdf = (fds) => {
     const pdfElement = document.createElement("div");
-  
+
     const pdfContent = fds
       .map(
         (fd) =>
@@ -95,16 +95,16 @@ const Navbar = () => {
           </div>`
       )
       .join("");
-  
+
     pdfElement.innerHTML = pdfContent;
-  
+
     const options = {
       filename: "fixed_deposit_passbook.pdf",
       image: { type: "jpeg", quality: 0.98 },
       html2canvas: { scale: 2 },
       jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
     };
-  
+
     html2pdf().from(pdfElement).set(options).save();
   };
   

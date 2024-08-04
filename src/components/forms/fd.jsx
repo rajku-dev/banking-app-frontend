@@ -1,10 +1,9 @@
 import React from "react";
 import Joi from "joi-browser";
 import Form from "../common/form";
-import {getUser} from "../../services/userService"; 
 import {makeFD} from "../../services/fdServices"
 import { toast } from "react-toastify";
-
+import { getFdOption } from "../../services/fdServices";
 
 class FDForm extends Form {
   state = {
@@ -21,18 +20,17 @@ class FDForm extends Form {
   };
 
   async componentDidMount() {
-    const {data:user}=await getUser();
     const { search } = window.location;
     const params = new URLSearchParams(search);
     const data = { ...this.state.data };  
-    data.minTime = params.get("min");   
-    data.maxTime = params.get("max"); 
-    data.age=user.age;
-    if(user.age<60){
-      data.interest=params.get("interestUnder60");
-    }else{
-      data.interest=params.get("interestOver60")
-    }
+    const option = params.get("option");  
+    if(option>'3' || option<0) window.location='/notFound'
+    // console.log(option)
+    const {data:fdOption}=await getFdOption(option);
+    data.age=fdOption.age;
+    data.interest=fdOption.interest;
+    data.minTime=fdOption.minTime;
+    data.maxTime=fdOption.maxTime;
     this.setState({ data });       
   }
 

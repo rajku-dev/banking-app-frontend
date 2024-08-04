@@ -10,6 +10,10 @@ export function withdrawFD(data){
     return axios.post(api+'/withdraw',data)
 }
 
+export function getFdOption(option){
+    return axios.get(api+`/getFdOption/${option}`)
+}
+
 export function getFds(){
     return axios.get(api);
 }

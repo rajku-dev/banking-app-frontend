@@ -30,7 +30,7 @@ const FDOptions = () => {
               <td>{fd[2]}%</td>
               <td>{fd[3]}%</td>
               <td>
-                <Link className="btn btn-outline-success" to={`/fdoptions/form?min=${fd[0]}&max=${fd[1]}&interestUnder60=${fd[2]}&interestOver60=${fd[3]}`}>Proceed</Link>
+                <Link className="btn btn-outline-success" to={`/fdoptions/form?option=${index}`}>Proceed</Link>
               </td>
             </tr>
           ))}
