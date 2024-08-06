@@ -32,7 +32,7 @@ const Navbar = () => {
 
   const transPdf = (trans) => {
     const pdfElement = document.createElement("div");
-  
+
     const pdfContent = trans
       .map((transaction) => {
         const sender =
@@ -45,7 +45,9 @@ const Navbar = () => {
             <div>
               <p><strong>Transaction Type:</strong> ${transaction.transactionType.toUpperCase()}</p>
               <p><strong>Amount:</strong> ${transaction.amount}</p>
-              <p><strong>Transaction Date:</strong> ${new Date(transaction.transactionDate).toLocaleString()}</p>
+              <p><strong>Transaction Date:</strong> ${new Date(
+                transaction.transactionDate
+              ).toLocaleString()}</p>
               ${
                 transaction.transactionType === "transfer"
                   ? `<p><strong>Sender Email:</strong> ${transaction.senderEmail}</p>
@@ -69,10 +71,10 @@ const Navbar = () => {
       html2canvas: { scale: 2 },
       jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
     };
-  
+
     html2pdf().from(pdfElement).set(options).save();
   };
-  
+
   const fdPdf = (fds) => {
     const pdfElement = document.createElement("div");
 
@@ -107,10 +109,54 @@ const Navbar = () => {
 
     html2pdf().from(pdfElement).set(options).save();
   };
-  
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary p-0" >
+    <nav className="navbar navbar-expand-lg bg-body-tertiary p-0">
+      <div
+                      className="modal fade"
+                      id="exampleModal"
+                      tabindex="-1"
+                      aria-labelledby="exampleModalLabel"
+                      aria-hidden="true"
+                    >
+                      <div className="modal-dialog">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <h1
+                              className="modal-title fs-5 text-danger fw-bold"
+                              id="exampleModalLabel"
+                            >
+                              ALERT!
+                            </h1>
+                            <button
+                              type="button"
+                              className="btn-close"
+                              data-bs-dismiss="modal"
+                              aria-label="Close"
+                            ></button>
+                          </div>
+                          <div className="modal-body">
+                            Your account will be permanently deleted.
+                          </div>
+                          <div className="modal-footer">
+                            <button
+                              type="button"
+                              className="btn btn-secondary"
+                              data-bs-dismiss="modal"
+                            >
+                              Close
+                            </button>
+                            <button
+                              type="button"
+                              className="btn btn-danger"
+                              onClick={handleDeleteUser}
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
       <div className="container-fluid">
         <Link className="navbar-brand active" to="/">
           <img src="/bank3801.jpg" style={{ height: "90px" }} alt="Bank Logo" />
@@ -200,7 +246,7 @@ const Navbar = () => {
                 <li>
                   {user && (
                     <button className="dropdown-item" onClick={handleFdPdf}>
-                      Download History  <i class="fa-solid fa-file"></i>
+                      Download History <i class="fa-solid fa-file"></i>
                     </button>
                   )}
                 </li>
@@ -227,11 +273,20 @@ const Navbar = () => {
                   </li>
                   <li>
                     <button
-                      className="dropdown-item btn btn-danger p-2 fs-6 fw-bold text-danger"
-                      onClick={handleDeleteUser}
+                      type="button"
+                      class="dropdown-item btn btn-danger p-2 fs-6 fw-bold text-danger"
+                      data-bs-toggle="modal"
+                      data-bs-target="#exampleModal"
                     >
                       Delete Account
                     </button>
+
+                    {/* <button
+                      className="dropdown-item btn btn-danger p-2 fs-6 fw-bold text-danger"
+                      
+                    >
+                      Delete Account
+                    </button> */}
                   </li>
                 </ul>
               </li>
